@@ -1,0 +1,246 @@
+DECLARE
+   lu_        Custom_Lus_TAB.Lu%TYPE := 'CC1795ZipCodes';
+   lu_type_   Custom_Lus_TAB.Lu_Type%TYPE := Custom_Field_Lu_Types_API.DB_CUSTOM_LU;
+   info_msg_  CLOB;
+   info_page_msg_  CLOB;
+BEGIN
+   info_msg_ := NULL;
+   info_msg_ := Message_SYS.Construct('Custom Lu Export');
+   Message_SYS.Add_Attribute(info_msg_, 'TABLE_NAME', 'C_C1795_ZIP_CODES_CLT');
+   Message_SYS.Add_Attribute(info_msg_, 'VIEW_NAME', 'C_C1795_ZIP_CODES_CLV');
+   Message_SYS.Add_Attribute(info_msg_, 'PACKAGE_NAME', 'C_C1795_ZIP_CODES_CLP');
+   Message_SYS.Add_Attribute(info_msg_, 'PROMPT', 'Zip Codes for Valiadation');
+   Message_SYS.Add_Attribute(info_msg_, 'PUBLISHED', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'USED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'ROWKEY', 'C5D63D7E4C4D3ECCE053166A000AD7FD');
+   Message_SYS.Add_Attribute(info_msg_, 'NOTE', '');
+   Custom_Lus_API.Register(lu_, info_msg_);
+
+   info_msg_ := NULL;
+   info_msg_ := Message_SYS.Construct('Custom Field Attributes');
+   Message_SYS.Add_Attribute(info_msg_, 'DATA_TYPE', 'REFERENCE');
+   Message_SYS.Add_Attribute(info_msg_, 'FORMAT', 'UNFORMATTED');
+   Message_SYS.Add_Attribute(info_msg_, 'DATA_LENGTH', '100');
+   Message_SYS.Add_Attribute(info_msg_, 'DEFAULT_VALUE_TYPE', 'NO_DEFAULT_VALUE');
+   Message_SYS.Add_Attribute(info_msg_, 'DEFAULT_VALUE', '');
+   Message_SYS.Add_Attribute(info_msg_, 'MANDATORY', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'INSERTABLE', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'UPDATEABLE', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'QUERYABLE', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'LOV', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'INDEXED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'PRIVATE', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'INDEX_NAME', 'CF$_C_C1795_ZIP_C1368314981_IX');
+   Message_SYS.Add_Attribute(info_msg_, 'PROMPT', 'Country Code DB');
+   Message_SYS.Add_Attribute(info_msg_, 'CUSTOM_FIELD_TYPE', 'PERSISTENT_FIELD');
+   Message_SYS.Add_Attribute(info_msg_, 'CUSTOM_FIELD_IMPL_TYPE', 'NOT_APPLICABLE');
+   Message_SYS.Add_Attribute(info_msg_, 'EXPRESSION', 'C_C1795_Zip_Codes_Clp.Ref_Cf$_Country_Code_Db(t.cf$_Country_Code_Db)');
+   Message_SYS.Add_Attribute(info_msg_, 'METADATA', 'COUNTRY_CODE');
+   Message_SYS.Add_Attribute(info_msg_, 'LU_REFERENCE', 'IsoCountry');
+   Message_SYS.Add_Attribute(info_msg_, 'UI_OBJECT', 'DEFAULT');
+   Message_SYS.Add_Attribute(info_msg_, 'PUBLISHED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'USED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'ROWKEY', 'C5D63D7E4C573ECCE053166A000AD7FD');
+   Message_SYS.Add_Attribute(info_msg_, 'READ_ONLY_EXPRESSION', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'NOTE', 'Country Code DB');
+   Message_SYS.Add_Attribute(info_msg_, 'ENABLED_ON_REPORTS', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'CONSTRAINT_TYPE', 'RESTRICTED');
+   Message_SYS.Add_Attribute(info_msg_, 'LOV_VIEW', 'ISO_COUNTRY_LOV');
+   Message_SYS.Add_Attribute(info_msg_, 'ALTERNATE_KEY', 'FALSE');
+   Custom_Field_Attributes_API.Register(lu_, lu_type_, 'COUNTRY_CODE_DB', info_msg_);
+
+   info_msg_ := NULL;
+   info_msg_ := Message_SYS.Construct('Custom Field Attributes');
+   Message_SYS.Add_Attribute(info_msg_, 'DATA_TYPE', 'STRING');
+   Message_SYS.Add_Attribute(info_msg_, 'FORMAT', 'UPPERCASE');
+   Message_SYS.Add_Attribute(info_msg_, 'DATA_LENGTH', '50');
+   Message_SYS.Add_Attribute(info_msg_, 'DEFAULT_VALUE_TYPE', 'NO_DEFAULT_VALUE');
+   Message_SYS.Add_Attribute(info_msg_, 'DEFAULT_VALUE', '');
+   Message_SYS.Add_Attribute(info_msg_, 'MANDATORY', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'INSERTABLE', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'UPDATEABLE', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'QUERYABLE', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'LOV', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'INDEXED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'PRIVATE', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'INDEX_NAME', 'CF$_C_C1795_ZIP_CO295073918_IX');
+   Message_SYS.Add_Attribute(info_msg_, 'PROMPT', 'Zip Code');
+   Message_SYS.Add_Attribute(info_msg_, 'CUSTOM_FIELD_TYPE', 'PERSISTENT_FIELD');
+   Message_SYS.Add_Attribute(info_msg_, 'CUSTOM_FIELD_IMPL_TYPE', 'NOT_APPLICABLE');
+   Message_SYS.Add_Attribute(info_msg_, 'EXPRESSION', '');
+   Message_SYS.Add_Attribute(info_msg_, 'METADATA', '');
+   Message_SYS.Add_Attribute(info_msg_, 'LU_REFERENCE', '');
+   Message_SYS.Add_Attribute(info_msg_, 'UI_OBJECT', 'DEFAULT');
+   Message_SYS.Add_Attribute(info_msg_, 'PUBLISHED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'USED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'ROWKEY', 'C5D63D7E4C593ECCE053166A000AD7FD');
+   Message_SYS.Add_Attribute(info_msg_, 'READ_ONLY_EXPRESSION', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'NOTE', '');
+   Message_SYS.Add_Attribute(info_msg_, 'ENABLED_ON_REPORTS', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'CONSTRAINT_TYPE', 'RESTRICTED');
+   Message_SYS.Add_Attribute(info_msg_, 'LOV_VIEW', '');
+   Message_SYS.Add_Attribute(info_msg_, 'ALTERNATE_KEY', 'FALSE');
+   Custom_Field_Attributes_API.Register(lu_, lu_type_, 'ZIP_CODE', info_msg_);
+
+   info_msg_ := NULL;
+   info_page_msg_ :=  NULL;
+   info_msg_ := Message_SYS.Construct('Custom Pages');
+   Message_SYS.Add_Attribute(info_msg_, 'LU', 'CC1795ZipCodes');
+   Message_SYS.Add_Attribute(info_msg_, 'PACKAGE_NAME', 'C_C1795_ZIP_CODES_CLP');
+   Message_SYS.Add_Attribute(info_msg_, 'PAGE_TITLE', 'Churchill Zip Code Validation');
+   Message_SYS.Add_Attribute(info_msg_, 'VIEW_NAME', 'C_C1795_ZIP_CODES_CLV');
+   Message_SYS.Add_Attribute(info_msg_, 'PAGE_TYPE', 'TABLE_WINDOW');
+   Message_SYS.Add_Attribute(info_msg_, 'DEFAULT_HOME', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'NOTES', '');
+info_page_msg_ := info_page_msg_ ||'<?xml version="1.0" encoding="utf-16"?>
+<PageLayout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <PageItems>
+    <PageItem>
+      <Name>CF$_COUNTRY_CODE_DB</Name>
+      <ControlType>Column</ControlType>
+      <Ordinal>1</Ordinal>
+      <Properties>
+        <Property Name="SqlColumn">
+          <Value>CF$_COUNTRY_CODE_DB</Value>
+        </Property>
+        <Property Name="Ordinal">
+          <Value>1</Value>
+        </Property>
+        <Property Name="RecordSelectorItem">
+          <Value>False</Value>
+        </Property>
+        <Property Name="Insertable">
+          <Value>True</Value>
+        </Property>
+        <Property Name="UpdatePermissions">
+          <Value>UpdateAllowed</Value>
+        </Property>
+        <Property Name="Queryable">
+          <Value>True</Value>
+        </Property>
+        <Property Name="Visible">
+          <Value>True</Value>
+        </Property>
+        <Property Name="Location">
+          <Value>0, 0</Value>
+        </Property>
+        <Property Name="FieldDataType">
+          <Value>String</Value>
+        </Property>
+        <Property Name="FieldFormat">
+          <Value>Unformated</Value>
+        </Property>
+        <Property Name="LogicalParent">
+          <Value>[NaturalParent]</Value>
+        </Property>
+        <Property Name="Text">
+          <Value>Country Code DB</Value>
+        </Property>
+        <Property Name="Width">
+          <Value>194</Value>
+        </Property>
+        <Property Name="MultiLine">
+          <Value>False</Value>
+        </Property>
+        <Property Name="FieldMaxLength">
+          <Value>100</Value>
+        </Property>
+        <Property Name="UseEditor">
+          <Value>True</Value>
+        </Property>
+        <Property Name="CharacterCasing">
+          <Value>Normal</Value>
+        </Property>
+        <Property Name="TextAlign">
+          <Value>Left</Value>
+        </Property>
+        <Property Name="LovReference">
+          <Value>ISO_COUNTRY_LOV</Value>
+        </Property>
+        <Property Name="DisplayFormat">
+          <Value>COUNTRY_CODE</Value>
+        </Property>
+        <Property Name="LinkAware">
+          <Value>False</Value>
+        </Property>
+        <Property Name="TabIndex">
+          <Value>1</Value>
+        </Property>
+      </Properties>
+    </PageItem>
+    <PageItem>
+      <Name>CF$_ZIP_CODE</Name>
+      <ControlType>Column</ControlType>
+      <Ordinal>2</Ordinal>
+      <Properties>
+        <Property Name="SqlColumn">
+          <Value>CF$_ZIP_CODE</Value>
+        </Property>
+        <Property Name="Ordinal">
+          <Value>2</Value>
+        </Property>
+        <Property Name="RecordSelectorItem">
+          <Value>True</Value>
+        </Property>
+        <Property Name="Insertable">
+          <Value>True</Value>
+        </Property>
+        <Property Name="UpdatePermissions">
+          <Value>UpdateAllowed</Value>
+        </Property>
+        <Property Name="Queryable">
+          <Value>True</Value>
+        </Property>
+        <Property Name="Visible">
+          <Value>True</Value>
+        </Property>
+        <Property Name="Location">
+          <Value>0, 0</Value>
+        </Property>
+        <Property Name="FieldDataType">
+          <Value>String</Value>
+        </Property>
+        <Property Name="FieldFormat">
+          <Value>Uppercase</Value>
+        </Property>
+        <Property Name="LogicalParent">
+          <Value>[NaturalParent]</Value>
+        </Property>
+        <Property Name="Text">
+          <Value>Zip Code</Value>
+        </Property>
+        <Property Name="Width">
+          <Value>194</Value>
+        </Property>
+        <Property Name="MultiLine">
+          <Value>False</Value>
+        </Property>
+        <Property Name="FieldMaxLength">
+          <Value>50</Value>
+        </Property>
+        <Property Name="CharacterCasing">
+          <Value>Upper</Value>
+        </Property>
+        <Property Name="TextAlign">
+          <Value>Left</Value>
+        </Property>
+        <Property Name="LinkAware">
+          <Value>False</Value>
+        </Property>
+        <Property Name="TabIndex">
+          <Value>2</Value>
+        </Property>
+      </Properties>
+    </PageItem>
+  </PageItems>
+</PageLayout>';
+   Message_SYS.Add_Clob_Attribute(info_msg_, 'XML_DATA', info_page_msg_);
+   Message_SYS.Add_Attribute(info_msg_, 'ROWKEY', 'C5D63D7E4D673ECCE053166A000AD7FD');
+   Custom_Pages_API.Register('cpgcc1795zipcode', info_msg_);
+
+END;
+/
+/
+
+COMMIT
+/

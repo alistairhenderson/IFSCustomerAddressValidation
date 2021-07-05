@@ -1,0 +1,132 @@
+-------------------------------------------------------------------------------------------- 
+-- Export file for Custom Events CC1795_CUSTOMER_INFO_ADDR.
+-- 
+--  Date    Sign    History
+--  ------  ------  -----------------------------------------------------------
+--  210701  IFSAPP  Export file for task CC1795_CUSTOMER_INFO_ADDR.
+-------------------------------------------------------------------------------------------- 
+
+SET DEFINE ~
+PROMPT Register Custom Event "CC1795_CUSTOMER_INFO_ADDR"
+DECLARE
+   event_lu_name_      VARCHAR2(30)    := 'CustomerInfoAddress';
+   event_id_           VARCHAR2(30)    := Database_SYS.Unistr('CC1795_CUSTOMER_INFO_ADDR');
+   id_                 VARCHAR2(100);
+   info_msg_           VARCHAR2(32000) := NULL;
+BEGIN
+-- Construct Main Message
+   info_msg_    := Message_SYS.Construct('');
+   Message_SYS.Add_Attribute(info_msg_, 'EVENT_DESCRIPTION', Database_SYS.Unistr('Saving to CUSTOMER_INFO_ADDRESS'));
+   Message_SYS.Add_Attribute(info_msg_, 'EVENT_ENABLE', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'EVENT_TYPE_DB', 'CUSTOM');
+   Message_SYS.Add_Attribute(info_msg_, 'EVENT_TABLE_NAME', 'CUSTOMER_INFO_ADDRESS_TAB');
+   Message_SYS.Add_Attribute(info_msg_, 'EVENT_TRIGGER_TYPE_DB', 'BEFORE');
+   Message_SYS.Add_Attribute(info_msg_, 'MODIFIED_ATTRIBUTES', '');
+   Message_SYS.Add_Attribute(info_msg_, 'NEW_ROW_DB', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'MODIFY_ROW_DB', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'REMOVE_ROW_DB', 'FALSE');
+-- Register Custom Event
+   Fnd_Event_API.Register_Custom_Event(event_lu_name_, event_id_, info_msg_);
+   -- Register Event Parameter
+      info_msg_ := Message_SYS.Construct('');
+      id_  := Database_SYS.Unistr('ADDRESS1');
+      Message_SYS.Add_Attribute(info_msg_, 'ID_TYPE', 'STRING');
+      Message_SYS.Add_Attribute(info_msg_, 'PLSQL_METHOD', Database_SYS.Unistr(''));
+      Message_SYS.Add_Attribute(info_msg_, 'CURRENT_VALUE_DB', 'FALSE');
+      Message_SYS.Add_Attribute(info_msg_, 'NEW_VALUE_DB', 'TRUE');
+      Fnd_Event_Parameter_API.Register(event_lu_name_, event_id_, id_, info_msg_);
+   -- Register Event Parameter
+      info_msg_ := Message_SYS.Construct('');
+      id_  := Database_SYS.Unistr('ADDRESS2');
+      Message_SYS.Add_Attribute(info_msg_, 'ID_TYPE', 'STRING');
+      Message_SYS.Add_Attribute(info_msg_, 'PLSQL_METHOD', Database_SYS.Unistr(''));
+      Message_SYS.Add_Attribute(info_msg_, 'CURRENT_VALUE_DB', 'FALSE');
+      Message_SYS.Add_Attribute(info_msg_, 'NEW_VALUE_DB', 'TRUE');
+      Fnd_Event_Parameter_API.Register(event_lu_name_, event_id_, id_, info_msg_);
+   -- Register Event Parameter
+      info_msg_ := Message_SYS.Construct('');
+      id_  := Database_SYS.Unistr('ADDRESS3');
+      Message_SYS.Add_Attribute(info_msg_, 'ID_TYPE', 'STRING');
+      Message_SYS.Add_Attribute(info_msg_, 'PLSQL_METHOD', Database_SYS.Unistr(''));
+      Message_SYS.Add_Attribute(info_msg_, 'CURRENT_VALUE_DB', 'FALSE');
+      Message_SYS.Add_Attribute(info_msg_, 'NEW_VALUE_DB', 'TRUE');
+      Fnd_Event_Parameter_API.Register(event_lu_name_, event_id_, id_, info_msg_);
+   -- Register Event Parameter
+      info_msg_ := Message_SYS.Construct('');
+      id_  := Database_SYS.Unistr('ADDRESS4');
+      Message_SYS.Add_Attribute(info_msg_, 'ID_TYPE', 'STRING');
+      Message_SYS.Add_Attribute(info_msg_, 'PLSQL_METHOD', Database_SYS.Unistr(''));
+      Message_SYS.Add_Attribute(info_msg_, 'CURRENT_VALUE_DB', 'FALSE');
+      Message_SYS.Add_Attribute(info_msg_, 'NEW_VALUE_DB', 'TRUE');
+      Fnd_Event_Parameter_API.Register(event_lu_name_, event_id_, id_, info_msg_);
+   -- Register Event Parameter
+      info_msg_ := Message_SYS.Construct('');
+      id_  := Database_SYS.Unistr('ADDRESS5');
+      Message_SYS.Add_Attribute(info_msg_, 'ID_TYPE', 'STRING');
+      Message_SYS.Add_Attribute(info_msg_, 'PLSQL_METHOD', Database_SYS.Unistr(''));
+      Message_SYS.Add_Attribute(info_msg_, 'CURRENT_VALUE_DB', 'FALSE');
+      Message_SYS.Add_Attribute(info_msg_, 'NEW_VALUE_DB', 'TRUE');
+      Fnd_Event_Parameter_API.Register(event_lu_name_, event_id_, id_, info_msg_);
+   -- Register Event Parameter
+      info_msg_ := Message_SYS.Construct('');
+      id_  := Database_SYS.Unistr('ADDRESS6');
+      Message_SYS.Add_Attribute(info_msg_, 'ID_TYPE', 'STRING');
+      Message_SYS.Add_Attribute(info_msg_, 'PLSQL_METHOD', Database_SYS.Unistr(''));
+      Message_SYS.Add_Attribute(info_msg_, 'CURRENT_VALUE_DB', 'FALSE');
+      Message_SYS.Add_Attribute(info_msg_, 'NEW_VALUE_DB', 'TRUE');
+      Fnd_Event_Parameter_API.Register(event_lu_name_, event_id_, id_, info_msg_);
+   -- Register Event Parameter
+      info_msg_ := Message_SYS.Construct('');
+      id_  := Database_SYS.Unistr('ADDRESS_ID');
+      Message_SYS.Add_Attribute(info_msg_, 'ID_TYPE', 'STRING');
+      Message_SYS.Add_Attribute(info_msg_, 'PLSQL_METHOD', Database_SYS.Unistr(''));
+      Message_SYS.Add_Attribute(info_msg_, 'CURRENT_VALUE_DB', 'FALSE');
+      Message_SYS.Add_Attribute(info_msg_, 'NEW_VALUE_DB', 'TRUE');
+      Fnd_Event_Parameter_API.Register(event_lu_name_, event_id_, id_, info_msg_);
+   -- Register Event Parameter
+      info_msg_ := Message_SYS.Construct('');
+      id_  := Database_SYS.Unistr('CITY');
+      Message_SYS.Add_Attribute(info_msg_, 'ID_TYPE', 'STRING');
+      Message_SYS.Add_Attribute(info_msg_, 'PLSQL_METHOD', Database_SYS.Unistr(''));
+      Message_SYS.Add_Attribute(info_msg_, 'CURRENT_VALUE_DB', 'FALSE');
+      Message_SYS.Add_Attribute(info_msg_, 'NEW_VALUE_DB', 'TRUE');
+      Fnd_Event_Parameter_API.Register(event_lu_name_, event_id_, id_, info_msg_);
+   -- Register Event Parameter
+      info_msg_ := Message_SYS.Construct('');
+      id_  := Database_SYS.Unistr('COUNTRY');
+      Message_SYS.Add_Attribute(info_msg_, 'ID_TYPE', 'STRING');
+      Message_SYS.Add_Attribute(info_msg_, 'PLSQL_METHOD', Database_SYS.Unistr(''));
+      Message_SYS.Add_Attribute(info_msg_, 'CURRENT_VALUE_DB', 'FALSE');
+      Message_SYS.Add_Attribute(info_msg_, 'NEW_VALUE_DB', 'TRUE');
+      Fnd_Event_Parameter_API.Register(event_lu_name_, event_id_, id_, info_msg_);
+   -- Register Event Parameter
+      info_msg_ := Message_SYS.Construct('');
+      id_  := Database_SYS.Unistr('COUNTY');
+      Message_SYS.Add_Attribute(info_msg_, 'ID_TYPE', 'STRING');
+      Message_SYS.Add_Attribute(info_msg_, 'PLSQL_METHOD', Database_SYS.Unistr(''));
+      Message_SYS.Add_Attribute(info_msg_, 'CURRENT_VALUE_DB', 'FALSE');
+      Message_SYS.Add_Attribute(info_msg_, 'NEW_VALUE_DB', 'TRUE');
+      Fnd_Event_Parameter_API.Register(event_lu_name_, event_id_, id_, info_msg_);
+   -- Register Event Parameter
+      info_msg_ := Message_SYS.Construct('');
+      id_  := Database_SYS.Unistr('STATE');
+      Message_SYS.Add_Attribute(info_msg_, 'ID_TYPE', 'STRING');
+      Message_SYS.Add_Attribute(info_msg_, 'PLSQL_METHOD', Database_SYS.Unistr(''));
+      Message_SYS.Add_Attribute(info_msg_, 'CURRENT_VALUE_DB', 'FALSE');
+      Message_SYS.Add_Attribute(info_msg_, 'NEW_VALUE_DB', 'TRUE');
+      Fnd_Event_Parameter_API.Register(event_lu_name_, event_id_, id_, info_msg_);
+   -- Register Event Parameter
+      info_msg_ := Message_SYS.Construct('');
+      id_  := Database_SYS.Unistr('ZIP_CODE');
+      Message_SYS.Add_Attribute(info_msg_, 'ID_TYPE', 'STRING');
+      Message_SYS.Add_Attribute(info_msg_, 'PLSQL_METHOD', Database_SYS.Unistr(''));
+      Message_SYS.Add_Attribute(info_msg_, 'CURRENT_VALUE_DB', 'TRUE');
+      Message_SYS.Add_Attribute(info_msg_, 'NEW_VALUE_DB', 'TRUE');
+      Fnd_Event_Parameter_API.Register(event_lu_name_, event_id_, id_, info_msg_);
+   -- Update all actions with parameters
+      Fnd_Event_Action_API.Update_Action(event_lu_name_, event_id_, NULL);
+END;
+/
+COMMIT
+/
+SET DEFINE &

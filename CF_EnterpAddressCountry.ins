@@ -1,0 +1,127 @@
+DECLARE
+   lu_        Custom_Fields_TAB.Lu%TYPE := 'EnterpAddressCountry';
+   lu_type_   Custom_Fields_TAB.Lu_Type%TYPE := Custom_Field_Lu_Types_API.DB_CUSTOM_FIELD;
+   info_msg_  CLOB;
+BEGIN
+   info_msg_ := NULL;
+   info_msg_ := Message_SYS.Construct('Custom Fields Export');
+   Message_SYS.Add_Attribute(info_msg_, 'TABLE_NAME', 'ENTERP_ADDRESS_COUNTRY_CFT');
+   Message_SYS.Add_Attribute(info_msg_, 'VIEW_NAME', 'ENTERP_ADDRESS_COUNTRY_CFV');
+   Message_SYS.Add_Attribute(info_msg_, 'PACKAGE_NAME', 'ENTERP_ADDRESS_COUNTRY_CFP');
+   Message_SYS.Add_Attribute(info_msg_, 'PUBLISHED', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'USED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'ROWKEY', 'C5D63D7E4C113ECCE053166A000AD7FD');
+   Custom_Fields_API.Register(lu_, info_msg_);
+
+   info_msg_ := NULL;
+   info_msg_ := Message_SYS.Construct('Custom Field Attributes');
+   Message_SYS.Add_Attribute(info_msg_, 'DATA_TYPE', 'ENUMERATION');
+   Message_SYS.Add_Attribute(info_msg_, 'FORMAT', 'UNFORMATTED');
+   Message_SYS.Add_Attribute(info_msg_, 'DATA_LENGTH', '4000');
+   Message_SYS.Add_Attribute(info_msg_, 'DEFAULT_VALUE_TYPE', 'ENUMERATION_VALUE');
+   Message_SYS.Add_Attribute(info_msg_, 'DEFAULT_VALUE', '');
+   Message_SYS.Add_Attribute(info_msg_, 'MANDATORY', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'INSERTABLE', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'UPDATEABLE', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'QUERYABLE', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'LOV', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'INDEXED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'PRIVATE', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'INDEX_NAME', 'CF$_ENTERP_ADDRES4293988227_IX');
+   Message_SYS.Add_Attribute(info_msg_, 'PROMPT', 'Mandatory Fields');
+   Message_SYS.Add_Attribute(info_msg_, 'CUSTOM_FIELD_TYPE', 'PERSISTENT_FIELD');
+   Message_SYS.Add_Attribute(info_msg_, 'CUSTOM_FIELD_IMPL_TYPE', 'NOT_APPLICABLE');
+   Message_SYS.Add_Attribute(info_msg_, 'EXPRESSION', '');
+   Message_SYS.Add_Attribute(info_msg_, 'METADATA', '');
+   Message_SYS.Add_Attribute(info_msg_, 'LU_REFERENCE', 'CC1795mandatoryaddrfields');
+   Message_SYS.Add_Attribute(info_msg_, 'UI_OBJECT', 'MULTISELECTION');
+   Message_SYS.Add_Attribute(info_msg_, 'PUBLISHED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'USED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'ROWKEY', 'C60D44FA1DDE3ED2E053166A000A7369');
+   Message_SYS.Add_Attribute(info_msg_, 'READ_ONLY_EXPRESSION', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'NOTE', '');
+   Message_SYS.Add_Attribute(info_msg_, 'ENABLED_ON_REPORTS', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'CONSTRAINT_TYPE', 'RESTRICTED');
+   Message_SYS.Add_Attribute(info_msg_, 'LOV_VIEW', '');
+   Message_SYS.Add_Attribute(info_msg_, 'ALTERNATE_KEY', 'FALSE');
+   Custom_Field_Attributes_API.Register(lu_, lu_type_, 'MANDATORY_FIELDS', info_msg_);
+
+   info_msg_ := NULL;
+   info_msg_ := Message_SYS.Construct('Custom Field Attributes');
+   Message_SYS.Add_Attribute(info_msg_, 'DATA_TYPE', 'ENUMERATION');
+   Message_SYS.Add_Attribute(info_msg_, 'FORMAT', 'UNFORMATTED');
+   Message_SYS.Add_Attribute(info_msg_, 'DATA_LENGTH', '20');
+   Message_SYS.Add_Attribute(info_msg_, 'DEFAULT_VALUE_TYPE', 'ENUMERATION_VALUE');
+   Message_SYS.Add_Attribute(info_msg_, 'DEFAULT_VALUE', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'MANDATORY', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'INSERTABLE', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'UPDATEABLE', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'QUERYABLE', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'LOV', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'INDEXED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'PRIVATE', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'INDEX_NAME', 'CF$_ENTERP_ADDRES3204724432_IX');
+   Message_SYS.Add_Attribute(info_msg_, 'PROMPT', 'Mandatory Zip Code');
+   Message_SYS.Add_Attribute(info_msg_, 'CUSTOM_FIELD_TYPE', 'PERSISTENT_FIELD');
+   Message_SYS.Add_Attribute(info_msg_, 'CUSTOM_FIELD_IMPL_TYPE', 'NOT_APPLICABLE');
+   Message_SYS.Add_Attribute(info_msg_, 'EXPRESSION', '');
+   Message_SYS.Add_Attribute(info_msg_, 'METADATA', '');
+   Message_SYS.Add_Attribute(info_msg_, 'LU_REFERENCE', 'CC1795_true_false');
+   Message_SYS.Add_Attribute(info_msg_, 'UI_OBJECT', 'CHECKBOX');
+   Message_SYS.Add_Attribute(info_msg_, 'PUBLISHED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'USED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'ROWKEY', 'C5D63D7E4C153ECCE053166A000AD7FD');
+   Message_SYS.Add_Attribute(info_msg_, 'READ_ONLY_EXPRESSION', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'NOTE', 'Is the Zip Code Manditory');
+   Message_SYS.Add_Attribute(info_msg_, 'ENABLED_ON_REPORTS', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'CONSTRAINT_TYPE', 'RESTRICTED');
+   Message_SYS.Add_Attribute(info_msg_, 'LOV_VIEW', '');
+   Message_SYS.Add_Attribute(info_msg_, 'ALTERNATE_KEY', 'FALSE');
+   Custom_Field_Attributes_API.Register(lu_, lu_type_, 'MANDATORY_ZIP_CODE', info_msg_);
+
+   info_msg_ := NULL;
+   info_msg_ := Message_SYS.Construct('Custom Field Attributes');
+   Message_SYS.Add_Attribute(info_msg_, 'DATA_TYPE', 'ENUMERATION');
+   Message_SYS.Add_Attribute(info_msg_, 'FORMAT', 'UNFORMATTED');
+   Message_SYS.Add_Attribute(info_msg_, 'DATA_LENGTH', '20');
+   Message_SYS.Add_Attribute(info_msg_, 'DEFAULT_VALUE_TYPE', 'ENUMERATION_VALUE');
+   Message_SYS.Add_Attribute(info_msg_, 'DEFAULT_VALUE', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'MANDATORY', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'INSERTABLE', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'UPDATEABLE', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'QUERYABLE', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'LOV', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'INDEXED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'PRIVATE', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'INDEX_NAME', 'CF$_ENTERP_ADDRES1707298164_IX');
+   Message_SYS.Add_Attribute(info_msg_, 'PROMPT', 'Validate Zip Code');
+   Message_SYS.Add_Attribute(info_msg_, 'CUSTOM_FIELD_TYPE', 'PERSISTENT_FIELD');
+   Message_SYS.Add_Attribute(info_msg_, 'CUSTOM_FIELD_IMPL_TYPE', 'NOT_APPLICABLE');
+   Message_SYS.Add_Attribute(info_msg_, 'EXPRESSION', '');
+   Message_SYS.Add_Attribute(info_msg_, 'METADATA', '');
+   Message_SYS.Add_Attribute(info_msg_, 'LU_REFERENCE', 'CC1795_true_false');
+   Message_SYS.Add_Attribute(info_msg_, 'UI_OBJECT', 'CHECKBOX');
+   Message_SYS.Add_Attribute(info_msg_, 'PUBLISHED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'USED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'ROWKEY', 'C5D63D7E4C173ECCE053166A000AD7FD');
+   Message_SYS.Add_Attribute(info_msg_, 'READ_ONLY_EXPRESSION', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'NOTE', 'Validate zipcode against list');
+   Message_SYS.Add_Attribute(info_msg_, 'ENABLED_ON_REPORTS', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'CONSTRAINT_TYPE', 'RESTRICTED');
+   Message_SYS.Add_Attribute(info_msg_, 'LOV_VIEW', '');
+   Message_SYS.Add_Attribute(info_msg_, 'ALTERNATE_KEY', 'FALSE');
+   Custom_Field_Attributes_API.Register(lu_, lu_type_, 'VALIDATE_ZIP_CODE', info_msg_);
+
+   info_msg_ := NULL;
+   info_msg_ := Message_SYS.Construct('Custom Field Views');
+   Message_SYS.Add_Attribute(info_msg_, 'CF_VIEW_NAME', 'ENTERP_ADDRESS_COUNTRY2_CFV');
+   Message_SYS.Add_Attribute(info_msg_, 'PUBLISHED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'USED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'ROWKEY', 'C5D63D7E4C133ECCE053166A000AD7FD');
+   Custom_Field_Views_API.Register(lu_, lu_type_, 'ENTERP_ADDRESS_COUNTRY2', info_msg_);
+
+END;
+/
+
+COMMIT
+/

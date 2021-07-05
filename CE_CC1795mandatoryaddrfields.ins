@@ -1,0 +1,128 @@
+DECLARE
+   lu_        Custom_Enumerations_TAB.Lu%TYPE := 'CC1795mandatoryaddrfields';
+   info_msg_  CLOB;
+BEGIN
+   info_msg_ := NULL;
+   info_msg_ := Message_SYS.Construct('Custom Enumerations Export');
+   Message_SYS.Add_Attribute(info_msg_, 'PACKAGE_NAME', 'C_C1795MANDATORYADDRFIELDS_CFP');
+   Message_SYS.Add_Attribute(info_msg_, 'MODULE', 'CONFIG');
+   Message_SYS.Add_Attribute(info_msg_, 'PROMPT', 'CC1795mandatoryaddrfields');
+   Message_SYS.Add_Attribute(info_msg_, 'PUBLISHED', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'USED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'ROWKEY', 'C611DCABADC13CA6E0530F6A000A2B75');
+   Message_SYS.Add_Attribute(info_msg_, 'NOTE', '');
+   Custom_Enumerations_API.Register(lu_, info_msg_);
+
+   info_msg_ := NULL;
+   info_msg_ := Message_SYS.Construct('Custom Field Enumeration');
+   Message_SYS.Add_Attribute(info_msg_, 'CLIENT_VALUE', 'ADDRESS1');
+   Message_SYS.Add_Attribute(info_msg_, 'SEQ_NO', 1);
+   Message_SYS.Add_Attribute(info_msg_, 'PUBLISHED', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'USED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'ROWKEY', 'C611DCABADC33CA6E0530F6A000A2B75');
+   Custom_Field_Enum_Values_API.Register(lu_, 'ADDRESS1', info_msg_);
+
+   info_msg_ := NULL;
+   info_msg_ := Message_SYS.Construct('Custom Field Enumeration');
+   Message_SYS.Add_Attribute(info_msg_, 'CLIENT_VALUE', 'ADDRESS2');
+   Message_SYS.Add_Attribute(info_msg_, 'SEQ_NO', 2);
+   Message_SYS.Add_Attribute(info_msg_, 'PUBLISHED', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'USED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'ROWKEY', 'C611DCABADC53CA6E0530F6A000A2B75');
+   Custom_Field_Enum_Values_API.Register(lu_, 'ADDRESS2', info_msg_);
+
+   info_msg_ := NULL;
+   info_msg_ := Message_SYS.Construct('Custom Field Enumeration');
+   Message_SYS.Add_Attribute(info_msg_, 'CLIENT_VALUE', 'ADDRESS3');
+   Message_SYS.Add_Attribute(info_msg_, 'SEQ_NO', 3);
+   Message_SYS.Add_Attribute(info_msg_, 'PUBLISHED', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'USED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'ROWKEY', 'C611DCABADC73CA6E0530F6A000A2B75');
+   Custom_Field_Enum_Values_API.Register(lu_, 'ADDRESS3', info_msg_);
+
+   info_msg_ := NULL;
+   info_msg_ := Message_SYS.Construct('Custom Field Enumeration');
+   Message_SYS.Add_Attribute(info_msg_, 'CLIENT_VALUE', 'ADDRESS4');
+   Message_SYS.Add_Attribute(info_msg_, 'SEQ_NO', 4);
+   Message_SYS.Add_Attribute(info_msg_, 'PUBLISHED', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'USED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'ROWKEY', 'C611DCABADC93CA6E0530F6A000A2B75');
+   Custom_Field_Enum_Values_API.Register(lu_, 'ADDRESS4', info_msg_);
+
+   info_msg_ := NULL;
+   info_msg_ := Message_SYS.Construct('Custom Field Enumeration');
+   Message_SYS.Add_Attribute(info_msg_, 'CLIENT_VALUE', 'ADDRESS5');
+   Message_SYS.Add_Attribute(info_msg_, 'SEQ_NO', 5);
+   Message_SYS.Add_Attribute(info_msg_, 'PUBLISHED', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'USED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'ROWKEY', 'C611DCABADCB3CA6E0530F6A000A2B75');
+   Custom_Field_Enum_Values_API.Register(lu_, 'ADDRESS5', info_msg_);
+
+   info_msg_ := NULL;
+   info_msg_ := Message_SYS.Construct('Custom Field Enumeration');
+   Message_SYS.Add_Attribute(info_msg_, 'CLIENT_VALUE', 'ADDRESS6');
+   Message_SYS.Add_Attribute(info_msg_, 'SEQ_NO', 6);
+   Message_SYS.Add_Attribute(info_msg_, 'PUBLISHED', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'USED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'ROWKEY', 'C611DCABADCD3CA6E0530F6A000A2B75');
+   Custom_Field_Enum_Values_API.Register(lu_, 'ADDRESS6', info_msg_);
+
+   info_msg_ := NULL;
+   info_msg_ := Message_SYS.Construct('Custom Field Enumeration');
+   Message_SYS.Add_Attribute(info_msg_, 'CLIENT_VALUE', 'CITY');
+   Message_SYS.Add_Attribute(info_msg_, 'SEQ_NO', 80);
+   Message_SYS.Add_Attribute(info_msg_, 'PUBLISHED', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'USED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'ROWKEY', 'C611DCABADCF3CA6E0530F6A000A2B75');
+   Custom_Field_Enum_Values_API.Register(lu_, 'CITY', info_msg_);
+
+   info_msg_ := NULL;
+   info_msg_ := Message_SYS.Construct('Custom Field Enumeration');
+   Message_SYS.Add_Attribute(info_msg_, 'CLIENT_VALUE', 'CITY/STATE');
+   Message_SYS.Add_Attribute(info_msg_, 'SEQ_NO', 9);
+   Message_SYS.Add_Attribute(info_msg_, 'PUBLISHED', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'USED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'ROWKEY', 'C07CC994B6D6035AE0530F6A000AF01C');
+   Custom_Field_Enum_Values_API.Register(lu_, 'CITY_STATE', info_msg_);
+
+   info_msg_ := NULL;
+   info_msg_ := Message_SYS.Construct('Custom Field Enumeration');
+   Message_SYS.Add_Attribute(info_msg_, 'CLIENT_VALUE', 'COUNTRY');
+   Message_SYS.Add_Attribute(info_msg_, 'SEQ_NO', 100);
+   Message_SYS.Add_Attribute(info_msg_, 'PUBLISHED', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'USED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'ROWKEY', 'C611DCABADD13CA6E0530F6A000A2B75');
+   Custom_Field_Enum_Values_API.Register(lu_, 'COUNTRY', info_msg_);
+
+   info_msg_ := NULL;
+   info_msg_ := Message_SYS.Construct('Custom Field Enumeration');
+   Message_SYS.Add_Attribute(info_msg_, 'CLIENT_VALUE', 'COUNTY');
+   Message_SYS.Add_Attribute(info_msg_, 'SEQ_NO', 90);
+   Message_SYS.Add_Attribute(info_msg_, 'PUBLISHED', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'USED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'ROWKEY', 'C611DCABADD33CA6E0530F6A000A2B75');
+   Custom_Field_Enum_Values_API.Register(lu_, 'COUNTY', info_msg_);
+
+   info_msg_ := NULL;
+   info_msg_ := Message_SYS.Construct('Custom Field Enumeration');
+   Message_SYS.Add_Attribute(info_msg_, 'CLIENT_VALUE', 'COUNTY/STATE');
+   Message_SYS.Add_Attribute(info_msg_, 'SEQ_NO', 8);
+   Message_SYS.Add_Attribute(info_msg_, 'PUBLISHED', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'USED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'ROWKEY', 'C07CC994B6D2035AE0530F6A000AF01C');
+   Custom_Field_Enum_Values_API.Register(lu_, 'COUNTY_STATE', info_msg_);
+
+   info_msg_ := NULL;
+   info_msg_ := Message_SYS.Construct('Custom Field Enumeration');
+   Message_SYS.Add_Attribute(info_msg_, 'CLIENT_VALUE', 'STATE');
+   Message_SYS.Add_Attribute(info_msg_, 'SEQ_NO', 7);
+   Message_SYS.Add_Attribute(info_msg_, 'PUBLISHED', 'FALSE');
+   Message_SYS.Add_Attribute(info_msg_, 'USED', 'TRUE');
+   Message_SYS.Add_Attribute(info_msg_, 'ROWKEY', 'C611DCABADD53CA6E0530F6A000A2B75');
+   Custom_Field_Enum_Values_API.Register(lu_, 'STATE', info_msg_);
+
+END;
+/
+
+COMMIT
+/

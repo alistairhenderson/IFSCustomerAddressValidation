@@ -1,0 +1,164 @@
+SET DEFINE OFF
+
+DECLARE
+   info_msg_   CLOB;
+   PROCEDURE Import_Event_Actions (
+      event_lu_name_          IN VARCHAR2,
+      event_id_               IN VARCHAR2,
+      action_number_          IN NUMBER,
+      action_enable_          IN VARCHAR2,
+      action_parameters_      IN CLOB,
+      condition_type_         IN VARCHAR2,
+      condition_value_        IN VARCHAR2,
+      definition_modified_date_  IN DATE,
+      fnd_event_action_type_  IN VARCHAR2,
+      description_            IN VARCHAR2,
+      subscribable_           IN VARCHAR2,
+      system_defined_         IN VARCHAR2,
+      role_                   IN VARCHAR2,
+      rowkey_                 IN VARCHAR2 )
+   IS
+   BEGIN
+      info_msg_ := NULL;
+      info_msg_ := Message_SYS.Construct('FND_EVENT_ACTION_TAB');
+      Message_SYS.Add_Attribute(info_msg_, 'EVENT_LU_NAME', event_lu_name_);
+      Message_SYS.Add_Attribute(info_msg_, 'EVENT_ID', event_id_);
+      Message_SYS.Add_Attribute(info_msg_, 'ACTION_NUMBER', action_number_);
+      Message_SYS.Add_Attribute(info_msg_, 'ACTION_ENABLE', action_enable_);
+      Message_SYS.Add_Clob_Attribute(info_msg_, 'ACTION_PARAMETERS', to_char(action_parameters_));
+      Message_SYS.Add_Attribute(info_msg_, 'CONDITION_TYPE', condition_type_);
+      Message_SYS.Add_Attribute(info_msg_, 'CONDITION_VALUE', condition_value_);
+      Message_SYS.Add_Attribute(info_msg_, 'DEFINITION_MODIFIED_DATE', definition_modified_date_);
+      Message_SYS.Add_Attribute(info_msg_, 'FND_EVENT_ACTION_TYPE', fnd_event_action_type_);
+      Message_SYS.Add_Attribute(info_msg_, 'DESCRIPTION', description_);
+      Message_SYS.Add_Attribute(info_msg_, 'SUBSCRIBABLE', subscribable_);
+      Message_SYS.Add_Attribute(info_msg_, 'SYSTEM_DEFINED', system_defined_);
+      Message_SYS.Add_Attribute(info_msg_, 'ROLE', role_);
+      Message_SYS.Add_Attribute(info_msg_, 'ROWKEY', rowkey_);
+      Fnd_Event_Action_API.Register(info_msg_);
+   END;
+BEGIN
+   Import_Event_Actions( Database_SYS.Unistr('CustomerInfoAddress'),
+                         Database_SYS.Unistr('CC1795_CUSTOMER_INFO_ADDR'), 
+                         Database_SYS.Unistr('0'),
+                         Database_SYS.Unistr('TRUE'), 
+                         Database_SYS.Unistr('!FNDSER.EVENT_ACTION_PARAM'||CHR(10)||'$SQL=DECLARE'||CHR(10)||'-address_id_ varchar2(100)'||
+                         ';'||CHR(10)||'-address1_ varchar2(100);'||CHR(10)||'-address2_ varchar2(100);'||CHR(10)||''||
+                         '-address3_ varchar2(100);'||CHR(10)||'-address4_ varchar2(100);'||CHR(10)||'-address5_ var'||
+                         'char2(100);'||CHR(10)||'-address6_ varchar2(100);'||CHR(10)||'-city_ varchar2(100);'||
+                         ''||CHR(10)||'-county_ varchar2(100);'||CHR(10)||'-state_ varchar2(100);'||CHR(10)||'-'||
+                         ''||CHR(10)||'-country_code_ varchar2(5);'||CHR(10)||'-zip_code_ varchar2(30);'||CHR(10)||''||
+                         '-validate_zip_ varchar2(10);'||CHR(10)||'-mandatory_zip_ varchar2(10);'||CHR(10)||'-Mandat'||
+                         'ory_fields_ varchar(1000); '||CHR(10)||'-Mandatory_fields_ext_ varchar(1000); '||
+                         ''||CHR(10)||'-'||CHR(10)||'-ind_ varchar2(20);'||CHR(10)||'-'||CHR(10)||'-attr_ varchar2(3'||
+                         '2000);'||CHR(10)||'-ptr_ int;'||CHR(10)||'-name_ varchar2(32000);'||CHR(10)||'-value_ varc'||
+                         'har2(32000);'||CHR(10)||'-'||CHR(10)||'-begin'||CHR(10)||'-'||CHR(10)||'-address_id_ := '''||
+                         ''||CHR(38)||'NEW:ADDRESS_ID'';'||CHR(10)||'-'||CHR(10)||'-Trace_SYS.Message(''===== CC1795'||
+                         ' Address ID ==== ''|| address_id_);'||CHR(10)||'-'||CHR(10)||'-if address_id_ <> ''00'''||
+                         ''||CHR(10)||'-then'||CHR(10)||'-'||CHR(10)||'-address1_ := '''||CHR(38)||'NEW:ADDRESS1'';'||
+                         ''||CHR(10)||'-address2_ := '''||CHR(38)||'NEW:ADDRESS2'';'||CHR(10)||'-address3_ := '''||
+                         ''||CHR(38)||'NEW:ADDRESS3''; '||CHR(10)||'-address4_ := '''||CHR(38)||'NEW:ADDRESS4'';'||
+                         ''||CHR(10)||'-address5_ := '''||CHR(38)||'NEW:ADDRESS5''; '||CHR(10)||'-address6_ := '''||
+                         ''||CHR(38)||'NEW:ADDRESS6''; '||CHR(10)||'-city_ :='''||CHR(38)||'NEW:CITY'';'||CHR(10)||''||
+                         '-county_  := '''||CHR(38)||'NEW:COUNTY''; '||CHR(10)||'-state_  := '''||CHR(38)||'NEW:STAT'||
+                         'E'';'||CHR(10)||'-country_code_ := '''||CHR(38)||'NEW:COUNTRY'';'||CHR(10)||'-zip_code_ :='||
+                         ' '''||CHR(38)||'NEW:ZIP_CODE'';'||CHR(10)||'-'||CHR(10)||'-Trace_SYS.Message(''===== CC179'||
+                         '5 Country ==== ''|| country_code_);'||CHR(10)||'-'||CHR(10)||'-'||CHR(10)||'-begin  '||
+                         ''||CHR(10)||'-select 1 '||CHR(10)||'-into ind_'||CHR(10)||'-from ENTERP_ADDRESS_COUNTRY2  '||
+                         'ea '||CHR(10)||'-where ea.country_code = country_code_;'||CHR(10)||'-'||CHR(10)||'-excepti'||
+                         'on when others'||CHR(10)||'-  then'||CHR(10)||'-    null;'||CHR(10)||'-    return;'||
+                         ''||CHR(10)||'-'||CHR(10)||'-end;'||CHR(10)||'-'||CHR(10)||'-if ind_ is not null'||
+                         ''||CHR(10)||'-then  '||CHR(10)||'-'||CHR(10)||'-begin '||CHR(10)||'-select '||CHR(10)||'-e'||
+                         'a.CF$_MANDATORY_ZIP_CODE_DB,'||CHR(10)||'-ea.CF$_VALIDATE_ZIP_CODE_DB,'||CHR(10)||'-ea.cf$'||
+                         '_Mandatory_fields'||CHR(10)||'-into mandatory_zip_,validate_zip_,Mandatory_fields_'||
+                         ''||CHR(10)||'-from ifsapp.enterp_address_country2_cfv ea'||CHR(10)||'-where ea.country_cod'||
+                         'e = country_code_ ;'||CHR(10)||'-'||CHR(10)||'-exception when others'||CHR(10)||'-  then'||
+                         ''||CHR(10)||'-    null;'||CHR(10)||'-    return;'||CHR(10)||'-end;'||CHR(10)||'-'||
+                         ''||CHR(10)||'-'||CHR(10)||'--- test if zip is required'||CHR(10)||'-if mandatory_zip_ = '''||
+                         'TRUE'''||CHR(10)||'-  then'||CHR(10)||'-    if zip_code_ is null'||CHR(10)||'-      then'||
+                         ''||CHR(10)||'-           error_sys.Record_General(null,''Field [Zip Code] is mandatory for'||
+                         ' Customer Info Address and requires a value'',''INFO'');'||CHR(10)||'-     end if;'||
+                         ''||CHR(10)||'-end if;  '||CHR(10)||'-'||CHR(10)||'-'||CHR(10)||'--- Validate the zip if re'||
+                         'quired'||CHR(10)||'-if validate_zip_ = ''TRUE'''||CHR(10)||'-then'||CHR(10)||'-ind_ := nul'||
+                         'l;'||CHR(10)||'-'||CHR(10)||'-begin'||CHR(10)||'-    '||CHR(10)||'-    select zc.CF$_ZIP_C'||
+                         'ODE '||CHR(10)||'-    into ind_'||CHR(10)||'-    from C_C1795_ZIP_CODES_CLV zc'||
+                         ''||CHR(10)||'-    where upper(replace(zc.cf$_ZIP_CODE,'' '','''')) = upper(replace(zip_cod'||
+                         'e_,'' '',''''));'||CHR(10)||'-'||CHR(10)||'-exception when others'||CHR(10)||'-  then'||
+                         ''||CHR(10)||'-    error_sys.Record_General(null,''The [Zip Code] entered is not recognised'||
+                         ''',''INFO'');'||CHR(10)||'-end;'||CHR(10)||'-'||CHR(10)||'-end if;'||CHR(10)||'-   '||
+                         ''||CHR(10)||'--- Now check if there are other fields to be validated'||CHR(10)||'--- Add a'||
+                         'nd end indicator to allow the loop to work'||CHR(10)||'-Mandatory_fields_ext_ := Mandatory'||
+                         '_fields_||'';END'';'||CHR(10)||'-'||CHR(10)||'-'||CHR(10)||'-attr_ := replace(Mandatory_fi'||
+                         'elds_ext_,'';'',chr(31)||chr(30));'||CHR(10)||'-ptr_ := NULL;'||CHR(10)||'- WHILE (Client_'||
+                         'SYS.Get_Next_From_Attr(attr_, ptr_, name_, value_)) LOOP'||CHR(10)||'-    CASE name_'||
+                         ''||CHR(10)||'-         WHEN (''ADDRESS1'') THEN'||CHR(10)||'-           if address1_ is nu'||
+                         'll'||CHR(10)||'-             then'||CHR(10)||'-              error_sys.Record_General(null'||
+                         ',''Field ['' || lower(name_)||'']  is mandatory for Customer Info Address and requires a v'||
+                         'alue'',''INFO''); '||CHR(10)||'-           end if;    '||CHR(10)||'-'||CHR(10)||'-        '||
+                         ' WHEN (''ADDRESS2'') THEN'||CHR(10)||'-           if address2_ is null'||CHR(10)||'-      '||
+                         '       then'||CHR(10)||'-            error_sys.Record_General(null,''Field ['' || lower(na'||
+                         'me_)||'']  is mandatory for Customer Info Address and requires a value'',''INFO''); '||
+                         ''||CHR(10)||'-           end if;    '||CHR(10)||'-         WHEN (''ADDRESS3'') THEN'||
+                         ''||CHR(10)||'-           if address3_ is null'||CHR(10)||'-             then'||CHR(10)||'-'||
+                         '              error_sys.Record_General(null,''Field ['' || lower(name_)||'']  is mandatory'||
+                         ' for Customer Info Address and requires a value'',''INFO''); '||CHR(10)||'-           end '||
+                         'if;    '||CHR(10)||'-         WHEN (''ADDRESS4'') THEN'||CHR(10)||'-           if address4'||
+                         '_ is null'||CHR(10)||'-             then'||CHR(10)||'-              error_sys.Record_Gener'||
+                         'al(null,''Field ['' || lower(name_)||'']  is mandatory for Customer Info Address and requi'||
+                         'res a value'',''INFO''); '||CHR(10)||'-           end if;    '||CHR(10)||'-         WHEN ('||
+                         '''ADDRESS6'') THEN'||CHR(10)||'-           if address5_ is null'||CHR(10)||'-             '||
+                         'then'||CHR(10)||'-              error_sys.Record_General(null,''Field ['' || lower(name_)|'||
+                         '|'']  is mandatory for Customer Info Address and requires a value'',''INFO''); '||
+                         ''||CHR(10)||'-           end if;    '||CHR(10)||'-         WHEN (''ADDRESS6'') THEN'||
+                         ''||CHR(10)||'-           if address6_ is null'||CHR(10)||'-             then'||CHR(10)||'-'||
+                         '              error_sys.Record_General(null,''Field ['' || lower(name_)||'']  is mandatory'||
+                         ' for Customer Info Address and requires a value'',''INFO''); '||CHR(10)||'-           end '||
+                         'if;'||CHR(10)||'-               '||CHR(10)||'-         WHEN (''CITY'') THEN'||CHR(10)||'- '||
+                         '          if city_ is null'||CHR(10)||'-             then'||CHR(10)||'-              error'||
+                         '_sys.Record_General(null,''Field ['' || lower(name_)||'']  is mandatory for Customer Info '||
+                         'Address and requires a value'',''INFO''); '||CHR(10)||'-           end if;  '||CHR(10)||'-'||
+                         '             '||CHR(10)||'-         WHEN (''COUNTY'') THEN'||CHR(10)||'-           if coun'||
+                         'ty_ is null'||CHR(10)||'-             then'||CHR(10)||'-              error_sys.Record_Gen'||
+                         'eral(null,''Field ['' || lower(name_)||'']  is mandatory for Customer Info Address and req'||
+                         'uires a value'',''INFO''); '||CHR(10)||'-           end if;    '||CHR(10)||'-           '||
+                         ''||CHR(10)||'-         WHEN (''STATE'') THEN'||CHR(10)||'-           if state_ is null'||
+                         ''||CHR(10)||'-             then'||CHR(10)||'-              error_sys.Record_General(null,'||
+                         '''Field ['' || lower(name_)||'']  is mandatory for Customer Info Address and requires a va'||
+                         'lue'',''INFO''); '||CHR(10)||'-           end if;     '||CHR(10)||'-'||CHR(10)||'-       W'||
+                         'HEN (''COUNTY/STATE'') THEN'||CHR(10)||'-           if state_ is null and county_ is null'||
+                         ''||CHR(10)||'-             then'||CHR(10)||'-              error_sys.Record_General(null,'||
+                         '''Either Field ['' || lower(name_)||'']  is mandatory for Customer Info Address and requir'||
+                         'es a value'',''INFO''); '||CHR(10)||'-           end if;    '||CHR(10)||'-'||CHR(10)||'- W'||
+                         'HEN (''CITY/STATE'') THEN'||CHR(10)||'-           if state_ is null and county_ is null'||
+                         ''||CHR(10)||'-             then'||CHR(10)||'-              error_sys.Record_General(null,'||
+                         '''Either Field ['' || lower(name_)||'']  is mandatory for Customer Info Address and requir'||
+                         'es a value'',''INFO''); '||CHR(10)||'-           end if;    '||CHR(10)||'-'||CHR(10)||'-'||
+                         ''||CHR(10)||'-         WHEN (''COUNTRY'') THEN'||CHR(10)||'-           if country_code_ is'||
+                         ' null'||CHR(10)||'-             then'||CHR(10)||'-              error_sys.Record_General(n'||
+                         'ull,''Field ['' || lower(name_)||'']  is mandatory for Customer Info Address and requires '||
+                         'a value'',''INFO''); '||CHR(10)||'-           end if;    '||CHR(10)||'-'||CHR(10)||'-     '||
+                         '    END CASE;'||CHR(10)||'-      END LOOP;'||CHR(10)||'-'||CHR(10)||'-end if;'||CHR(10)||''||
+                         '-'||CHR(10)||'-end if;'||CHR(10)||'-end; '||CHR(10)||'$ATTACH=!ATTACHMENTS'||CHR(10)||''),
+                         Database_SYS.Unistr('!EVENT_ACTION_COND_TYPE'||CHR(10)||'$OLD:ZIP_CODE='||CHR(10)||'$NEW:ADDRESS1='||CHR(10)||''||
+                         '$NEW:ADDRESS2='||CHR(10)||'$NEW:ADDRESS3='||CHR(10)||'$NEW:ADDRESS4='||CHR(10)||'$NEW:ADDR'||
+                         'ESS5='||CHR(10)||'$NEW:ADDRESS6='||CHR(10)||'$NEW:ADDRESS_ID='||CHR(10)||'$NEW:CITY='||
+                         ''||CHR(10)||'$NEW:COUNTRY='||CHR(10)||'$NEW:COUNTY='||CHR(10)||'$NEW:STATE='||CHR(10)||'$N'||
+                         'EW:ZIP_CODE='||CHR(10)||''), 
+                         Database_SYS.Unistr('!EVENT_ACTION_COND_VALUE'||CHR(10)||'$OLD:ZIP_CODE='||CHR(10)||'$NEW:ADDRESS1='||
+                         ''||CHR(10)||'$NEW:ADDRESS2='||CHR(10)||'$NEW:ADDRESS3='||CHR(10)||'$NEW:ADDRESS4='||
+                         ''||CHR(10)||'$NEW:ADDRESS5='||CHR(10)||'$NEW:ADDRESS6='||CHR(10)||'$NEW:ADDRESS_ID='||
+                         ''||CHR(10)||'$NEW:CITY='||CHR(10)||'$NEW:COUNTRY='||CHR(10)||'$NEW:COUNTY='||CHR(10)||'$NE'||
+                         'W:STATE='||CHR(10)||'$NEW:ZIP_CODE='||CHR(10)||''),
+                         To_Date(Database_SYS.Unistr('2021-07-01-17.03.27'), 'YYYY-MM-DD-HH24.MI.SS'),
+                         Database_SYS.Unistr('EXECUTEONLINESQL'), 
+                         Database_SYS.Unistr('Validate the zip code'), 
+                         Database_SYS.Unistr('FALSE'), 
+                         Database_SYS.Unistr('FALSE'), 
+                         Database_SYS.Unistr(''), 
+                         Database_SYS.Unistr('C16F83F666BC3D36E053166A000A67CC'));
+END;
+/
+COMMIT
+/
+SET DEFINE ON
+
