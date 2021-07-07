@@ -86,73 +86,74 @@ BEGIN
                          'e_,'' '',''''));'||CHR(10)||'-'||CHR(10)||'-exception when others'||CHR(10)||'-  then'||
                          ''||CHR(10)||'-    error_sys.Record_General(null,''The [Zip Code] entered is not recognised'||
                          ''',''INFO'');'||CHR(10)||'-end;'||CHR(10)||'-'||CHR(10)||'-end if;'||CHR(10)||'-   '||
-                         ''||CHR(10)||'--- Now check if there are other fields to be validated'||CHR(10)||'--- Add a'||
-                         'nd end indicator to allow the loop to work'||CHR(10)||'-Mandatory_fields_ext_ := Mandatory'||
-                         '_fields_||'';END'';'||CHR(10)||'-'||CHR(10)||'-'||CHR(10)||'-attr_ := replace(Mandatory_fi'||
-                         'elds_ext_,'';'',chr(31)||chr(30));'||CHR(10)||'-ptr_ := NULL;'||CHR(10)||'- WHILE (Client_'||
-                         'SYS.Get_Next_From_Attr(attr_, ptr_, name_, value_)) LOOP'||CHR(10)||'-    CASE name_'||
-                         ''||CHR(10)||'-         WHEN (''ADDRESS1'') THEN'||CHR(10)||'-           if address1_ is nu'||
-                         'll'||CHR(10)||'-             then'||CHR(10)||'-Trace_SYS.Message(''===== CC1795 '' || name'||
-                         '_ ||'' ==== ''|| name_);'||CHR(10)||'-              error_sys.Record_General(null,''Field '||
-                         '['' || lower(name_)||'']  is mandatory for Customer Info Address and requires a value'','''||
-                         'INFO''); '||CHR(10)||'-           end if;    '||CHR(10)||'-'||CHR(10)||'-         WHEN ('''||
-                         'ADDRESS2'') THEN'||CHR(10)||'-           if address2_ is null'||CHR(10)||'-             th'||
-                         'en'||CHR(10)||'-Trace_SYS.Message(''===== CC1795 '' || name_ ||'' ==== ''|| name_);'||
-                         ''||CHR(10)||'-            error_sys.Record_General(null,''Field ['' || lower(name_)||'']  '||
-                         'is mandatory for Customer Info Address and requires a value'',''INFO''); '||CHR(10)||'-   '||
-                         '        end if;    '||CHR(10)||'-         WHEN (''ADDRESS3'') THEN'||CHR(10)||'-          '||
-                         ' if address3_ is null'||CHR(10)||'-             then'||CHR(10)||'-Trace_SYS.Message(''===='||
-                         '= CC1795 '' || name_ ||'' ==== ''|| name_);'||CHR(10)||'-              error_sys.Record_Ge'||
-                         'neral(null,''Field ['' || lower(name_)||'']  is mandatory for Customer Info Address and re'||
-                         'quires a value'',''INFO''); '||CHR(10)||'-           end if;    '||CHR(10)||'-         WHE'||
-                         'N (''ADDRESS4'') THEN'||CHR(10)||'-           if address4_ is null'||CHR(10)||'-          '||
-                         '   then'||CHR(10)||'-Trace_SYS.Message(''===== CC1795 '' || name_ ||'' ==== ''|| name_);'||
+                         ''||CHR(10)||'-if Mandatory_fields_ is not null'||CHR(10)||'-then'||CHR(10)||'--- Now check'||
+                         ' if there are other fields to be validated'||CHR(10)||'--- Add and end indicator to allow '||
+                         'the loop to work'||CHR(10)||'-Mandatory_fields_ext_ := Mandatory_fields_||'';END'';'||
+                         ''||CHR(10)||'-attr_ := replace(Mandatory_fields_ext_,'';'',chr(31)||chr(30));'||CHR(10)||''||
+                         '-ptr_ := NULL;'||CHR(10)||'- WHILE (Client_SYS.Get_Next_From_Attr(attr_, ptr_, name_, valu'||
+                         'e_)) LOOP'||CHR(10)||'-    CASE name_'||CHR(10)||'-         WHEN (''ADDRESS1'') THEN'||
+                         ''||CHR(10)||'-           if address1_ is null'||CHR(10)||'-             then'||CHR(10)||'-'||
+                         'Trace_SYS.Message(''===== CC1795 '' || name_ ||'' ==== ''|| name_);'||CHR(10)||'-         '||
+                         '     error_sys.Record_General(null,''Field ['' || lower(name_)||'']  is mandatory for Cust'||
+                         'omer Info Address and requires a value'',''INFO''); '||CHR(10)||'-           end if;    '||
+                         ''||CHR(10)||'-'||CHR(10)||'-         WHEN (''ADDRESS2'') THEN'||CHR(10)||'-           if a'||
+                         'ddress2_ is null'||CHR(10)||'-             then'||CHR(10)||'-Trace_SYS.Message(''===== CC1'||
+                         '795 '' || name_ ||'' ==== ''|| name_);'||CHR(10)||'-            error_sys.Record_General(n'||
+                         'ull,''Field ['' || lower(name_)||'']  is mandatory for Customer Info Address and requires '||
+                         'a value'',''INFO''); '||CHR(10)||'-           end if;    '||CHR(10)||'-         WHEN (''AD'||
+                         'DRESS3'') THEN'||CHR(10)||'-           if address3_ is null'||CHR(10)||'-             then'||
+                         ''||CHR(10)||'-Trace_SYS.Message(''===== CC1795 '' || name_ ||'' ==== ''|| name_);'||
                          ''||CHR(10)||'-              error_sys.Record_General(null,''Field ['' || lower(name_)||'']'||
                          '  is mandatory for Customer Info Address and requires a value'',''INFO''); '||CHR(10)||'- '||
-                         '          end if;    '||CHR(10)||'-         WHEN (''ADDRESS6'') THEN'||CHR(10)||'-        '||
-                         '   if address5_ is null'||CHR(10)||'-             then'||CHR(10)||'-Trace_SYS.Message(''=='||
+                         '          end if;    '||CHR(10)||'-         WHEN (''ADDRESS4'') THEN'||CHR(10)||'-        '||
+                         '   if address4_ is null'||CHR(10)||'-             then'||CHR(10)||'-Trace_SYS.Message(''=='||
                          '=== CC1795 '' || name_ ||'' ==== ''|| name_);'||CHR(10)||'-              error_sys.Record_'||
                          'General(null,''Field ['' || lower(name_)||'']  is mandatory for Customer Info Address and '||
                          'requires a value'',''INFO''); '||CHR(10)||'-           end if;    '||CHR(10)||'-         W'||
-                         'HEN (''ADDRESS6'') THEN'||CHR(10)||'-           if address6_ is null'||CHR(10)||'-        '||
+                         'HEN (''ADDRESS6'') THEN'||CHR(10)||'-           if address5_ is null'||CHR(10)||'-        '||
                          '     then'||CHR(10)||'-Trace_SYS.Message(''===== CC1795 '' || name_ ||'' ==== ''|| name_);'||
                          ''||CHR(10)||'-              error_sys.Record_General(null,''Field ['' || lower(name_)||'']'||
                          '  is mandatory for Customer Info Address and requires a value'',''INFO''); '||CHR(10)||'- '||
-                         '          end if;'||CHR(10)||'-               '||CHR(10)||'-         WHEN (''CITY'') THEN'||
-                         ''||CHR(10)||'-           if city_ is null'||CHR(10)||'-             then'||CHR(10)||'-Trac'||
-                         'e_SYS.Message(''===== CC1795 '' || name_ ||'' ==== ''|| name_);'||CHR(10)||'-             '||
-                         ' error_sys.Record_General(null,''Field ['' || lower(name_)||'']  is mandatory for Customer'||
-                         ' Info Address and requires a value'',''INFO''); '||CHR(10)||'-           end if;  '||
-                         ''||CHR(10)||'-             '||CHR(10)||'-         WHEN (''COUNTY'') THEN'||CHR(10)||'-    '||
-                         '       if county_ is null'||CHR(10)||'-             then'||CHR(10)||'-Trace_SYS.Message('''||
-                         '===== CC1795 '' || name_ ||'' ==== ''|| name_);'||CHR(10)||'-              error_sys.Recor'||
-                         'd_General(null,''Field ['' || lower(name_)||'']  is mandatory for Customer Info Address an'||
-                         'd requires a value'',''INFO''); '||CHR(10)||'-           end if;    '||CHR(10)||'-        '||
-                         '   '||CHR(10)||'-         WHEN (''STATE'') THEN'||CHR(10)||'-           if state_ is null'||
+                         '          end if;    '||CHR(10)||'-         WHEN (''ADDRESS6'') THEN'||CHR(10)||'-        '||
+                         '   if address6_ is null'||CHR(10)||'-             then'||CHR(10)||'-Trace_SYS.Message(''=='||
+                         '=== CC1795 '' || name_ ||'' ==== ''|| name_);'||CHR(10)||'-              error_sys.Record_'||
+                         'General(null,''Field ['' || lower(name_)||'']  is mandatory for Customer Info Address and '||
+                         'requires a value'',''INFO''); '||CHR(10)||'-           end if;'||CHR(10)||'-              '||
+                         ' '||CHR(10)||'-         WHEN (''CITY'') THEN'||CHR(10)||'-           if city_ is null'||
                          ''||CHR(10)||'-             then'||CHR(10)||'-Trace_SYS.Message(''===== CC1795 '' || name_ '||
                          '||'' ==== ''|| name_);'||CHR(10)||'-              error_sys.Record_General(null,''Field ['||
                          ''' || lower(name_)||'']  is mandatory for Customer Info Address and requires a value'',''I'||
-                         'NFO''); '||CHR(10)||'-           end if;     '||CHR(10)||'-'||CHR(10)||'-       WHEN (''CO'||
-                         'UNTY/STATE'') THEN'||CHR(10)||'-           if state_ is null and county_ is null'||
-                         ''||CHR(10)||'-             then'||CHR(10)||'-Trace_SYS.Message(''===== CC1795 '' || name_ '||
-                         '||'' ==== ''|| name_);'||CHR(10)||'-Trace_SYS.Message(''===== CC1795 county ==== ''|| coun'||
-                         'ty_);'||CHR(10)||'-Trace_SYS.Message(''===== CC1795 state ==== ''|| state_);'||CHR(10)||'-'||
-                         ''||CHR(10)||'-              error_sys.Record_General(null,''Either Field ['' || lower(name'||
-                         '_)||'']  is mandatory for Customer Info Address and requires a value'',''INFO''); '||
-                         ''||CHR(10)||'-           end if;    '||CHR(10)||'-'||CHR(10)||'- WHEN (''CITY/STATE'') THE'||
-                         'N'||CHR(10)||'-   if state_ is null and city_ is null'||CHR(10)||'-             then'||
-                         ''||CHR(10)||'-              Trace_SYS.Message(''===== CC1795 '' || name_ ||'' ==== ''|| na'||
-                         'me_);'||CHR(10)||'-              Trace_SYS.Message(''===== CC1795 state ==== ''|| state_);'||
-                         '            '||CHR(10)||'-              Trace_SYS.Message(''===== CC1795 city ==== ''|| ci'||
-                         'ty_);'||CHR(10)||'-              error_sys.Record_General(null,''Either Field ['' || lower'||
-                         '(name_)||'']  is mandatory for Customer Info Address and requires a value'',''INFO''); '||
-                         ''||CHR(10)||'-           end if;    '||CHR(10)||'-'||CHR(10)||'-         WHEN (''COUNTRY'''||
-                         ') THEN'||CHR(10)||'-           if country_code_ is null'||CHR(10)||'-             then'||
+                         'NFO''); '||CHR(10)||'-           end if;  '||CHR(10)||'-             '||CHR(10)||'-       '||
+                         '  WHEN (''COUNTY'') THEN'||CHR(10)||'-           if county_ is null'||CHR(10)||'-         '||
+                         '    then'||CHR(10)||'-Trace_SYS.Message(''===== CC1795 '' || name_ ||'' ==== ''|| name_);'||
                          ''||CHR(10)||'-              error_sys.Record_General(null,''Field ['' || lower(name_)||'']'||
                          '  is mandatory for Customer Info Address and requires a value'',''INFO''); '||CHR(10)||'- '||
-                         '          end if;    '||CHR(10)||'-'||CHR(10)||'-         END CASE;'||CHR(10)||'-      END'||
-                         ' LOOP;'||CHR(10)||'-'||CHR(10)||'-end if;'||CHR(10)||'-'||CHR(10)||'-end if;'||CHR(10)||'-'||
-                         'end; '||CHR(10)||'$ATTACH=!ATTACHMENTS'||CHR(10)||''),
+                         '          end if;    '||CHR(10)||'-           '||CHR(10)||'-         WHEN (''STATE'') THEN'||
+                         ''||CHR(10)||'-           if state_ is null'||CHR(10)||'-             then'||CHR(10)||'-Tra'||
+                         'ce_SYS.Message(''===== CC1795 '' || name_ ||'' ==== ''|| name_);'||CHR(10)||'-            '||
+                         '  error_sys.Record_General(null,''Field ['' || lower(name_)||'']  is mandatory for Custome'||
+                         'r Info Address and requires a value'',''INFO''); '||CHR(10)||'-           end if;     '||
+                         ''||CHR(10)||'-'||CHR(10)||'-       WHEN (''COUNTY/STATE'') THEN'||CHR(10)||'-           if'||
+                         ' state_ is null and county_ is null'||CHR(10)||'-             then'||CHR(10)||'-Trace_SYS.'||
+                         'Message(''===== CC1795 '' || name_ ||'' ==== ''|| name_);'||CHR(10)||'-Trace_SYS.Message('||
+                         '''===== CC1795 county ==== ''|| county_);'||CHR(10)||'-Trace_SYS.Message(''===== CC1795 st'||
+                         'ate ==== ''|| state_);'||CHR(10)||'-'||CHR(10)||'-              error_sys.Record_General(n'||
+                         'ull,''Either Field ['' || lower(name_)||'']  is mandatory for Customer Info Address and re'||
+                         'quires a value'',''INFO''); '||CHR(10)||'-           end if;    '||CHR(10)||'-'||
+                         ''||CHR(10)||'- WHEN (''CITY/STATE'') THEN'||CHR(10)||'-   if state_ is null and city_ is n'||
+                         'ull'||CHR(10)||'-             then'||CHR(10)||'-              Trace_SYS.Message(''===== CC'||
+                         '1795 '' || name_ ||'' ==== ''|| name_);'||CHR(10)||'-              Trace_SYS.Message(''==='||
+                         '== CC1795 state ==== ''|| state_);            '||CHR(10)||'-              Trace_SYS.Messag'||
+                         'e(''===== CC1795 city ==== ''|| city_);'||CHR(10)||'-              error_sys.Record_Genera'||
+                         'l(null,''Either Field ['' || lower(name_)||'']  is mandatory for Customer Info Address and'||
+                         ' requires a value'',''INFO''); '||CHR(10)||'-           end if;    '||CHR(10)||'-'||
+                         ''||CHR(10)||'-         WHEN (''COUNTRY'') THEN'||CHR(10)||'-           if country_code_ is'||
+                         ' null'||CHR(10)||'-             then'||CHR(10)||'-              error_sys.Record_General(n'||
+                         'ull,''Field ['' || lower(name_)||'']  is mandatory for Customer Info Address and requires '||
+                         'a value'',''INFO''); '||CHR(10)||'-           end if;    '||CHR(10)||'-'||CHR(10)||'-     '||
+                         '    END CASE;'||CHR(10)||'-      END LOOP;'||CHR(10)||'-'||CHR(10)||'-end if;'||CHR(10)||''||
+                         '-'||CHR(10)||'-end if;'||CHR(10)||'-'||CHR(10)||'-end if;'||CHR(10)||'-end; '||CHR(10)||'$'||
+                         'ATTACH=!ATTACHMENTS'||CHR(10)||''),
                          Database_SYS.Unistr('!EVENT_ACTION_COND_TYPE'||CHR(10)||'$OLD:ZIP_CODE='||CHR(10)||'$NEW:ADDRESS1='||CHR(10)||''||
                          '$NEW:ADDRESS2='||CHR(10)||'$NEW:ADDRESS3='||CHR(10)||'$NEW:ADDRESS4='||CHR(10)||'$NEW:ADDR'||
                          'ESS5='||CHR(10)||'$NEW:ADDRESS6='||CHR(10)||'$NEW:ADDRESS_ID='||CHR(10)||'$NEW:CITY='||
@@ -163,7 +164,7 @@ BEGIN
                          ''||CHR(10)||'$NEW:ADDRESS5='||CHR(10)||'$NEW:ADDRESS6='||CHR(10)||'$NEW:ADDRESS_ID='||
                          ''||CHR(10)||'$NEW:CITY='||CHR(10)||'$NEW:COUNTRY='||CHR(10)||'$NEW:COUNTY='||CHR(10)||'$NE'||
                          'W:STATE='||CHR(10)||'$NEW:ZIP_CODE='||CHR(10)||''),
-                         To_Date(Database_SYS.Unistr('2021-07-05-10.01.47'), 'YYYY-MM-DD-HH24.MI.SS'),
+                         To_Date(Database_SYS.Unistr('2021-07-07-12.44.02'), 'YYYY-MM-DD-HH24.MI.SS'),
                          Database_SYS.Unistr('EXECUTEONLINESQL'), 
                          Database_SYS.Unistr('Validate the zip code'), 
                          Database_SYS.Unistr('FALSE'), 
